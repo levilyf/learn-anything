@@ -59,6 +59,16 @@ class ProjectStructureTests(unittest.TestCase):
             self.assertNotIn("../../formats/", skill)
             self.assertNotIn("../../visual/", skill)
 
+    def test_packager_refuses_to_delete_existing_user_directory(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = Path(temporary) / "keep-me"
+            destination.mkdir()
+            marker = destination / "important.txt"
+            marker.write_text("user data", encoding="utf-8")
+            with self.assertRaises(FileExistsError):
+                build_skill(destination)
+            self.assertEqual(marker.read_text(encoding="utf-8"), "user data")
+
 
 if __name__ == "__main__":
     unittest.main()
