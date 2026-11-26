@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://learn-anything.dev/schemas/lesson.schema.json",
+  "$id": "urn:learn-anything:schema:v1:lesson",
   "title": "Learn Anything lesson",
   "type": "object",
   "required": ["schema_version", "id", "subject", "title", "outcome", "explanation", "worked_example", "practice", "assessment", "next_action"],
