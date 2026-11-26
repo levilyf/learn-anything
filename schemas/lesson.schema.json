@@ -3,17 +3,21 @@
   "$id": "https://learn-anything.dev/schemas/lesson.schema.json",
   "title": "Learn Anything lesson",
   "type": "object",
-  "required": ["schema_version", "id", "subject", "title", "outcome", "practice", "assessment"],
+  "required": ["schema_version", "id", "subject", "title", "outcome", "explanation", "worked_example", "practice", "assessment", "next_action"],
   "properties": {
     "schema_version": {"const": "1.0.0"},
-    "id": {"type": "string"},
-    "subject": {"type": "string"},
-    "title": {"type": "string"},
-    "outcome": {"type": "string"},
+    "id": {"type": "string", "minLength": 1},
+    "subject": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "outcome": {"type": "string", "minLength": 1},
     "prerequisites": {"type": "array", "items": {"type": "string"}},
     "estimated_minutes": {"type": "integer", "minimum": 1},
-    "practice": {"type": "array", "items": {"type": "string"}, "minItems": 1},
-    "assessment": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+    "explanation": {"type": "string", "minLength": 1},
+    "worked_example": {"type": "string", "minLength": 1},
+    "practice": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "assessment": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "feedback_guidance": {"type": "string"},
+    "next_action": {"type": "string", "enum": ["advance", "practice", "revisit_prerequisite", "reteach_differently", "review_later"]}
   },
   "additionalProperties": false
 }
