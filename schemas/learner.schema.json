@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://learn-anything.dev/schemas/learner.schema.json",
+  "$id": "urn:learn-anything:schema:v1:learner",
   "title": "Learn Anything learner record",
   "type": "object",
   "required": ["schema_version", "learner_id", "subject", "mastery"],
