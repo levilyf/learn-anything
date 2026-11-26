@@ -1,0 +1,3 @@
+# Optional project support. Reuses the project's existing Lemon Squeezy checkout.
+custom:
+  - "https://animiso.lemonsqueezy.com/checkout/buy/334c98ef-5133-400b-83a3-a4afc36e4f71"
