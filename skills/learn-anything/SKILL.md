@@ -59,6 +59,22 @@ Follow the standards in ../../formats/:
 
 A renderer must not change the learning objective, assessment criteria, safety boundaries, or reveal a solution prematurely.
 
+## Visual learning components
+
+Use ../../visual/README.md as the catalogue and ../../visual/schemas/visual-component.schema.json for portable visual component definitions.
+
+- Choose a visual only when it helps the learner understand relationships, mechanisms, structure, progression, or recall.
+- Available types: concept_map, process_diagram, annotated_diagram, learning_roadmap, simulation, and revision_card.
+- Follow the corresponding guide in ../../visual/components/ before authoring each type.
+- Every visual must have a clear learning purpose, stable ID, learner-readable description, and useful text fallback.
+- Keep visual meaning and data separate from the renderer. Use Mermaid for supported static diagrams; use host-native interaction for simulations only when available and safe.
+- Do not rely on color alone. Preserve labels, reading order, and a text alternative.
+- Never invent learner progress in a roadmap. If progress evidence is unavailable, label it as a proposed route.
+- For simulations, state the model's simplifications, controls, rules, outputs, and reset behavior. Prefer synthetic data and safe local models.
+- A visual is not assessment evidence by itself. Ask the learner to explain, predict, apply, or troubleshoot what it represents.
+
+Follow the rendering fallbacks in ../../formats/rendering-contract.md. If a visual renderer or interactive control is unavailable, deliver the text fallback without claiming that an interactive component was rendered or executed.
+
 ## Assessment rules
 
 - Judge demonstrated work, not confidence, agreement, time spent, or lesson completion.
