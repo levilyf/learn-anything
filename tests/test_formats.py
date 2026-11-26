@@ -50,7 +50,10 @@ if __name__ == "__main__":
     unittest.main()
 
 
-class VisualLearningTests(FormatContractTests):
+class VisualLearningTests(unittest.TestCase):
+    def read(self, relative):
+        return (ROOT / relative).read_text(encoding="utf-8")
+
     def test_visual_component_catalogue_and_guides_exist(self):
         for relative in (
             "visual/README.md",
