@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -10,11 +11,14 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "README.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md",
     "SECURITY.md", "ROADMAP.md", "skills/learn-anything/SKILL.md",
-    "scripts/package_skill.py", "subjects/cybersecurity/subject.md",
-    "subjects/_template/subject.md", "formats/README.md", "formats/markdown.md",
-    "formats/mermaid.md", "formats/json.md", "formats/rendering-contract.md",
-    "formats/lesson-template.md", "visual/README.md",
-    "visual/schemas/visual-component.schema.json",
+    "scripts/package_skill.py", "subjects/catalog.md",
+    "docs/subject-ecosystem.md", "subjects/cybersecurity/subject.md",
+    "subjects/cybersecurity/roadmap.md", "subjects/cybersecurity/skills-map.md",
+    "subjects/cybersecurity/labs-and-projects.md",
+    "subjects/cybersecurity/assessment-guide.md", "subjects/_template/subject.md",
+    "formats/README.md", "formats/markdown.md", "formats/mermaid.md",
+    "formats/json.md", "formats/rendering-contract.md", "formats/lesson-template.md",
+    "visual/README.md", "visual/schemas/visual-component.schema.json",
     "visual/components/concept-map.md", "visual/components/flow-diagram.md",
     "visual/components/annotated-diagram.md", "visual/components/learning-roadmap.md",
     "visual/components/simulation.md", "visual/components/revision-card.md",
@@ -23,11 +27,26 @@ REQUIRED = [
 ]
 
 
+def validate_catalogue(errors: list[str]) -> None:
+    path = ROOT / "subjects/catalog.md"
+    if not path.is_file():
+        return
+    content = path.read_text(encoding="utf-8")
+    ids = re.findall(r"\| (\`[a-z0-9]+(?:-[a-z0-9]+)*\`) \|", content)
+    if not ids:
+        errors.append("Subject catalogue has no stable subject IDs.")
+    if len(ids) != len(set(ids)):
+        errors.append("Subject catalogue contains duplicate subject IDs.")
+    if "\`cybersecurity\`" not in ids:
+        errors.append("Subject catalogue is missing the cybersecurity subject ID.")
+
+
 def main() -> int:
     errors: list[str] = []
     for relative in REQUIRED:
         if not (ROOT / relative).is_file():
             errors.append(f"Missing required file: {relative}")
+    validate_catalogue(errors)
     for path in ROOT.glob("**/*.schema.json"):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
