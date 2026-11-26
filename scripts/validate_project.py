@@ -13,6 +13,12 @@ REQUIRED = [
     "subjects/cybersecurity/subject.md", "subjects/_template/subject.md",
     "formats/README.md", "formats/markdown.md", "formats/mermaid.md",
     "formats/json.md", "formats/rendering-contract.md", "formats/lesson-template.md",
+    "visual/README.md", "visual/schemas/visual-component.schema.json",
+    "visual/components/concept-map.md", "visual/components/flow-diagram.md",
+    "visual/components/annotated-diagram.md", "visual/components/learning-roadmap.md",
+    "visual/components/simulation.md", "visual/components/revision-card.md",
+    "visual/examples/cybersecurity-concept-map.md", "visual/examples/website-request-flow.md",
+    "visual/examples/network-simulation.json",
 ]
 
 
@@ -21,7 +27,7 @@ def main() -> int:
     for relative in REQUIRED:
         if not (ROOT / relative).is_file():
             errors.append(f"Missing required file: {relative}")
-    for path in (ROOT / "schemas").glob("*.schema.json"):
+    for path in ROOT.glob("**/*.schema.json"):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
             if data.get("type") != "object" or "$schema" not in data:
