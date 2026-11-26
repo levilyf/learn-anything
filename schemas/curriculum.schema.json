@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://learn-anything.dev/schemas/curriculum.schema.json",
+  "$id": "urn:learn-anything:schema:v1:curriculum",
   "title": "Learn Anything curriculum",
   "type": "object",
   "required": ["schema_version", "subject", "goal", "stages"],
