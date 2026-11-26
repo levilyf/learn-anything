@@ -91,6 +91,16 @@ Learn Anything currently ships as an Agent Skills-compatible tutor skill. It is 
 
 Start with the [visual component catalogue](visual/README.md), [format standards](formats/README.md), and [architecture](docs/architecture.md).
 
+## Content, data, and presentation
+
+These layers stay separate so the learning method can travel between agents:
+
+- **Content** defines the concepts, explanations, examples, practice, and learning outcomes.
+- **Data** records curricula, prerequisites, attempts, assessment evidence, and learner progress.
+- **Presentation** decides how a host agent or future application displays lessons and visuals.
+
+See the [format standards](formats/README.md) and [rendering contract](formats/rendering-contract.md).
+
 ## Design principles
 
 - **Understanding over completion.** Finishing a lesson is not proof of learning.
