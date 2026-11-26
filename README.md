@@ -97,7 +97,7 @@ These layers stay separate so the learning method can travel between agents:
 
 - **Content** defines the concepts, explanations, examples, practice, and learning outcomes.
 - **Data** records curricula, prerequisites, attempts, assessment evidence, and learner progress.
-- **Presentation** decides how a host agent or future application displays lessons and visuals.
+- **Presentation** decides how a host agent or future application displays lessons and visuals. Markdown is used for lessons, Mermaid for diagrams, and JSON for portable learning data.
 
 See the [format standards](formats/README.md) and [rendering contract](formats/rendering-contract.md).
 
