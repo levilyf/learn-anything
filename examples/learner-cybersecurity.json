@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "learner_id": "example-learner",
+  "subject": "cybersecurity",
+  "goal": "Build beginner foundations and learn safe defensive security",
+  "level": "beginner",
+  "current_stage": "stage-0-orientation",
+  "mastery": [],
+  "weak_concepts": [],
+  "next_action": "Explain what cybersecurity means and why authorization matters",
+  "updated_at": "2026-01-01T00:00:00Z"
+}
