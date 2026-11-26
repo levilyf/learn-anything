@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Learn Anything</title><desc id="desc">An abstract open book forming a connected learning path.</desc>
+<defs><linearGradient id="g" x1="28" y1="24" x2="228" y2="232" gradientUnits="userSpaceOnUse"><stop stop-color="#7C5CFC"/><stop offset="1" stop-color="#21C6B7"/></linearGradient></defs>
+<rect x="8" y="8" width="240" height="240" rx="58" fill="#101522"/>
+<path d="M128 76c-23-16-52-19-80-8v104c29-10 57-7 80 10 23-17 51-20 80-10V68c-28-11-57-8-80 8Z" fill="none" stroke="url(#g)" stroke-width="12" stroke-linejoin="round"/>
+<path d="M128 76v106" stroke="#F5F7FF" stroke-width="8" stroke-linecap="round"/>
+<path d="M68 100c15-4 30-2 43 5M68 126c15-4 30-2 43 5M145 105c13-7 28-9 43-5M145 131c13-7 28-9 43-5" fill="none" stroke="#F5F7FF" stroke-width="7" stroke-linecap="round"/>
+<circle cx="128" cy="47" r="10" fill="#21C6B7"/>
+</svg>
