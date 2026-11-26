@@ -13,6 +13,7 @@
 <p align="center">
   <a href="#quick-start">Get started</a> ·
   <a href="#how-it-works">How it works</a> ·
+  <a href="subjects/catalog.md">Explore subjects</a> ·
   <a href="docs/README.md">Documentation</a> ·
   <a href="CONTRIBUTING.md">Contribute</a> ·
   <a href="#support-the-project">Support</a>
@@ -81,11 +82,19 @@ Learn Anything currently ships as an Agent Skills-compatible tutor skill. It is 
    ```
 
 3. Install the generated `dist/learn-anything/` folder using your agent's documented skills mechanism. For Pi, see [the Pi installation guide](integrations/pi/README.md).
-4. Start a learning session with this prompt:
+4. Start a learning session with a goal-specific prompt, for example:
 
 > Teach me cybersecurity from absolute zero. Diagnose what I know, build a realistic learning roadmap, and start with the first concept. Teach one concept at a time and test my understanding before moving on.
 
-The generated package includes the subject module, schemas, format contracts, and visual guides. **Do not install only `skills/learn-anything/` from the source tree**, because its supporting materials live elsewhere in the repository.
+The generated package includes the subject modules, schemas, format contracts, and visual guides. **Do not install only `skills/learn-anything/` from the source tree**, because its supporting materials live elsewhere in the repository.
+
+## Explore the subject library
+
+The [subject catalogue](subjects/catalog.md) maps the planned learning ecosystem across technology, business, academic foundations, communication, design, professional capabilities, and practical skills.
+
+The catalogue is intentionally broader than the current authored content. A planned subject is not a finished course. Modules move through Listed, Outlined, Authored, Reviewed, and Validated stages. See the [subject ecosystem blueprint](docs/subject-ecosystem.md) for demand scoring, personalization, completeness standards, and quality gates.
+
+The cybersecurity module is being expanded into a multi-stage pathway covering digital foundations, networking, programming, core security, application and cloud security, defensive operations, and specialist tracks. Start with its [subject guide](subjects/cybersecurity/subject.md), [skill map](subjects/cybersecurity/skills-map.md), and [safe labs and projects](subjects/cybersecurity/labs-and-projects.md).
 
 ## See the learning system
 
@@ -122,7 +131,7 @@ See the [format standards](formats/README.md) and [rendering contract](formats/r
 
 **Early development · v0.1.0 foundation**
 
-The repository includes the initial teaching workflow, Agent Skills entry point, cybersecurity starter module, portable schemas, visual component specifications, examples, and basic automated checks.
+The repository includes the initial teaching workflow, Agent Skills entry point, cybersecurity curriculum outline and support guides, subject ecosystem blueprint, portable schemas, visual component specifications, examples, and basic automated checks.
 
 It does **not** yet provide a hosted platform, universal interactive renderer, automatic long-term storage, or proven learning-outcome claims. We are validating the learning method before building those layers.
 
