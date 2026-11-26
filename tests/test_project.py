@@ -12,7 +12,12 @@ class ProjectStructureTests(unittest.TestCase):
     def test_required_files_exist(self):
         required = [
             "README.md", "LICENSE", "skills/learn-anything/SKILL.md",
-            "subjects/cybersecurity/subject.md", "subjects/_template/subject.md",
+            "subjects/catalog.md", "docs/subject-ecosystem.md",
+            "subjects/cybersecurity/subject.md", "subjects/cybersecurity/roadmap.md",
+            "subjects/cybersecurity/skills-map.md",
+            "subjects/cybersecurity/labs-and-projects.md",
+            "subjects/cybersecurity/assessment-guide.md",
+            "subjects/_template/subject.md",
             "schemas/learner.schema.json", "schemas/curriculum.schema.json",
             "schemas/lesson.schema.json", "schemas/assessment.schema.json",
         ]
@@ -42,14 +47,24 @@ class ProjectStructureTests(unittest.TestCase):
 
     def test_cybersecurity_module_has_safety_boundary(self):
         content = (ROOT / "subjects/cybersecurity/subject.md").read_text(encoding="utf-8")
-        self.assertIn("Safety boundaries", content)
-        self.assertIn("authorized", content.lower())
+        self.assertIn("Safety and legal boundaries", content)
+        self.assertIn("authorized targets", content)
+        self.assertIn("specialization", content.lower())
+
+    def test_subject_catalogue_has_unique_ids_and_statuses(self):
+        content = (ROOT / "subjects/catalog.md").read_text(encoding="utf-8")
+        self.assertIn("cybersecurity", content)
+        self.assertIn("AI and generative AI", content)
+        self.assertIn("Validated", content)
+        self.assertIn("Planned", content)
 
     def test_skill_package_is_self_contained(self):
         with tempfile.TemporaryDirectory() as temporary:
             package = build_skill(Path(temporary) / "learn-anything")
             self.assertTrue((package / "SKILL.md").is_file())
             self.assertTrue((package / "references/subjects/cybersecurity/subject.md").is_file())
+            self.assertTrue((package / "references/subjects/catalog.md").is_file())
+            self.assertTrue((package / "references/docs/subject-ecosystem.md").is_file())
             self.assertTrue((package / "references/schemas/learner.schema.json").is_file())
             self.assertTrue((package / "references/formats/rendering-contract.md").is_file())
             self.assertTrue((package / "references/visual/README.md").is_file())
