@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learn-anything.dev/schemas/curriculum.schema.json",
+  "title": "Learn Anything curriculum",
+  "type": "object",
+  "required": ["schema_version", "subject", "stages"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "subject": {"type": "string"},
+    "goal": {"type": "string"},
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "outcomes", "concepts"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "outcomes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "prerequisites": {"type": "array", "items": {"type": "string"}},
+          "concepts": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
