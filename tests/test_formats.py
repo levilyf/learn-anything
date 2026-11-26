@@ -50,7 +50,7 @@ if __name__ == "__main__":
     unittest.main()
 
 
-class VisualLearningTests(unittest.TestCase):
+class VisualLearningTests(FormatContractTests):
     def test_visual_component_catalogue_and_guides_exist(self):
         for relative in (
             "visual/README.md",
