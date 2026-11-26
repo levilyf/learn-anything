@@ -7,14 +7,29 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_DESTINATION = ROOT / "dist" / "learn-anything"
 PACKAGE_DIRS = ("schemas", "subjects", "formats", "visual")
 
 
 def build_skill(destination: Path) -> Path:
-    """Build a portable skill folder with every referenced local resource."""
+    """Build a portable skill folder without deleting arbitrary user data."""
+    destination = destination.resolve()
+    default_destination = DEFAULT_DESTINATION.resolve()
+
+    if destination == ROOT or destination in ROOT.parents:
+        raise ValueError("Refusing to use the repository root or one of its parents as output.")
+    if destination.is_relative_to(ROOT) and destination != default_destination:
+        raise ValueError("Output inside the repository is restricted to dist/learn-anything.")
     if destination.exists():
+        if destination != default_destination:
+            raise FileExistsError(
+                f"Output already exists; refusing to delete arbitrary data: {destination}"
+            )
+        if destination.is_symlink() or not destination.is_dir():
+            raise ValueError("Default output exists but is not a regular directory.")
         shutil.rmtree(destination)
-    destination.mkdir(parents=True)
+
+    destination.mkdir(parents=True, exist_ok=True)
 
     source_skill = ROOT / "skills" / "learn-anything"
     skill_text = (source_skill / "SKILL.md").read_text(encoding="utf-8")
@@ -43,11 +58,11 @@ def main() -> int:
         "destination",
         nargs="?",
         type=Path,
-        default=ROOT / "dist" / "learn-anything",
+        default=DEFAULT_DESTINATION,
         help="Output directory (default: dist/learn-anything)",
     )
     args = parser.parse_args()
-    output = build_skill(args.destination.resolve())
+    output = build_skill(args.destination)
     print(f"Built self-contained Learn Anything skill at: {output}")
     print("Install this directory as a single skill folder in your agent's skills directory.")
     return 0
