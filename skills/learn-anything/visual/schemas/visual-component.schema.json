@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:learn-anything:schema:v1:visual-component",
+  "title": "Learn Anything Visual Component",
+  "description": "Portable envelope for a visual teaching component. Type-specific payloads are defined by the visual component guides.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "title", "purpose", "description", "data", "fallback"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["concept_map", "process_diagram", "annotated_diagram", "learning_roadmap", "simulation", "revision_card"]
+    },
+    "title": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1},
+    "data": {"type": "object"},
+    "fallback": {"type": "string", "minLength": 1},
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text_alternative": {"type": "string"},
+        "reading_order": {"type": "array", "items": {"type": "string"}},
+        "color_independent": {"type": "boolean"}
+      }
+    },
+    "safety": {"type": "object"}
+  }
+}
