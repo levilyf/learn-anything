@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learn-anything.dev/schemas/learner.schema.json",
+  "title": "Learn Anything learner record",
+  "type": "object",
+  "required": ["schema_version", "learner_id", "subject", "mastery"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "learner_id": {"type": "string", "minLength": 1},
+    "subject": {"type": "string", "minLength": 1},
+    "goal": {"type": "string"},
+    "level": {"type": "string", "enum": ["beginner", "intermediate", "advanced", "mixed", "unknown"]},
+    "current_stage": {"type": "string"},
+    "mastery": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["concept_id", "state"],
+        "properties": {
+          "concept_id": {"type": "string"},
+          "state": {"type": "string", "enum": ["not_started", "introduced", "practicing", "proficient", "mastered"]},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "confidence": {"type": "integer", "minimum": 1, "maximum": 5},
+          "last_practiced": {"type": "string", "format": "date-time"},
+          "next_review": {"type": "string", "format": "date-time"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "weak_concepts": {"type": "array", "items": {"type": "string"}},
+    "next_action": {"type": "string"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
