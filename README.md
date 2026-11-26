@@ -91,7 +91,7 @@ Learn Anything currently ships as an Agent Skills-compatible tutor skill. It is 
 
 Start with the [visual component catalogue](visual/README.md), [format standards](formats/README.md), and [architecture](docs/architecture.md).
 
-## Content, data, and presentation
+## Content and presentation
 
 These layers stay separate so the learning method can travel between agents:
 
