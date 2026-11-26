@@ -6,6 +6,8 @@ Welcome to the Learn Anything documentation.
 - [Quick start and installation](installation.md)
 - [Project architecture](architecture.md)
 - [Teaching workflow](../core/teaching-loop.md)
+- [Subject ecosystem blueprint](subject-ecosystem.md)
+- [Subject catalogue](../subjects/catalog.md)
 - [Format standards](../formats/README.md)
 - [Visual learning components](../visual/README.md)
 
