@@ -35,6 +35,7 @@ See [installation](docs/installation.md), [architecture](docs/architecture.md), 
 - skills/: portable Agent Skills entry point and teaching references
 - core/: framework-neutral teaching-engine specifications
 - formats/: Markdown, Mermaid, JSON, lesson templates, and rendering rules
+- visual/: reusable visual learning components, schemas, guides, and examples
 - schemas/: versioned JSON contracts for learner and learning data
 - subjects/: subject-specific roadmaps, outcomes, and safe exercises
 - integrations/: agent-specific installation and compatibility notes
@@ -50,7 +51,7 @@ Learn Anything separates three things:
 2. **Data:** structured outcomes, prerequisites, attempts, evidence, and progress.
 3. **Presentation:** how an agent or future application displays the content.
 
-Markdown is the default for lessons and explanations. Mermaid is preferred for useful diagrams. JSON and JSON Schema carry portable learning data. If a host cannot render Mermaid, it must fall back to a textual explanation rather than displaying broken source or pretending a diagram rendered. See the [rendering contract](formats/rendering-contract.md).
+Markdown is the default for lessons and explanations. Mermaid is preferred for useful diagrams. JSON and JSON Schema carry portable learning data. If a host cannot render Mermaid, it must fall back to a textual explanation rather than displaying broken source or pretending a diagram rendered. See the [rendering contract](formats/rendering-contract.md) and [Visual Learning System](visual/README.md). Visual components include concept maps, process diagrams, annotated diagrams, learning roadmaps, simulations, and revision cards.
 
 ## Design principles
 
