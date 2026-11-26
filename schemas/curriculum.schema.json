@@ -3,26 +3,35 @@
   "$id": "https://learn-anything.dev/schemas/curriculum.schema.json",
   "title": "Learn Anything curriculum",
   "type": "object",
-  "required": ["schema_version", "subject", "stages"],
+  "required": ["schema_version", "subject", "goal", "stages"],
   "properties": {
     "schema_version": {"const": "1.0.0"},
-    "subject": {"type": "string"},
-    "goal": {"type": "string"},
+    "subject": {"type": "string", "minLength": 1},
+    "goal": {"type": "string", "minLength": 1},
+    "starting_level": {"type": "string", "enum": ["beginner", "intermediate", "advanced", "mixed", "unknown"]},
+    "assumptions": {"type": "array", "items": {"type": "string"}},
     "stages": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "title", "outcomes", "concepts"],
+        "required": ["id", "title", "outcomes", "concepts", "checkpoint"],
         "properties": {
-          "id": {"type": "string"},
-          "title": {"type": "string"},
-          "outcomes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "id": {"type": "string", "minLength": 1},
+          "title": {"type": "string", "minLength": 1},
+          "outcomes": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
           "prerequisites": {"type": "array", "items": {"type": "string"}},
-          "concepts": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+          "concepts": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+          "estimated_minutes": {"type": "integer", "minimum": 1},
+          "essential": {"type": "boolean", "default": true},
+          "checkpoint": {"type": "string", "minLength": 1},
+          "review_triggers": {"type": "array", "items": {"type": "string"}}
         },
         "additionalProperties": false
       }
-    }
+    },
+    "review_plan": {"type": "string"},
+    "optional_extensions": {"type": "array", "items": {"type": "string"}}
   },
   "additionalProperties": false
 }
