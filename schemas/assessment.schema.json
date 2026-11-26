@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://learn-anything.dev/schemas/assessment.schema.json",
+  "$id": "urn:learn-anything:schema:v1:assessment",
   "title": "Learn Anything assessment evidence",
   "type": "object",
   "required": ["schema_version", "concept_id", "task", "task_type", "result", "support_level"],
