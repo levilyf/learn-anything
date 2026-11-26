@@ -1,6 +1,9 @@
 import json
+import tempfile
 import unittest
 from pathlib import Path
+
+from scripts.package_skill import build_skill
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -41,6 +44,20 @@ class ProjectStructureTests(unittest.TestCase):
         content = (ROOT / "subjects/cybersecurity/subject.md").read_text(encoding="utf-8")
         self.assertIn("Safety boundaries", content)
         self.assertIn("authorized", content.lower())
+
+    def test_skill_package_is_self_contained(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            package = build_skill(Path(temporary) / "learn-anything")
+            self.assertTrue((package / "SKILL.md").is_file())
+            self.assertTrue((package / "references/subjects/cybersecurity/subject.md").is_file())
+            self.assertTrue((package / "references/schemas/learner.schema.json").is_file())
+            self.assertTrue((package / "references/formats/rendering-contract.md").is_file())
+            self.assertTrue((package / "references/visual/README.md").is_file())
+            skill = (package / "SKILL.md").read_text(encoding="utf-8")
+            self.assertNotIn("../../subjects/", skill)
+            self.assertNotIn("../../schemas/", skill)
+            self.assertNotIn("../../formats/", skill)
+            self.assertNotIn("../../visual/", skill)
 
 
 if __name__ == "__main__":
