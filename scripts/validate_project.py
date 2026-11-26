@@ -37,7 +37,7 @@ def validate_catalogue(errors: list[str]) -> None:
         errors.append("Subject catalogue has no stable subject IDs.")
     if len(ids) != len(set(ids)):
         errors.append("Subject catalogue contains duplicate subject IDs.")
-    if "\`cybersecurity\`" not in ids:
+    if "`cybersecurity`" not in ids:
         errors.append("Subject catalogue is missing the cybersecurity subject ID.")
 
 
