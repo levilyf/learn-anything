@@ -10,15 +10,16 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "README.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md",
     "SECURITY.md", "ROADMAP.md", "skills/learn-anything/SKILL.md",
-    "subjects/cybersecurity/subject.md", "subjects/_template/subject.md",
-    "formats/README.md", "formats/markdown.md", "formats/mermaid.md",
-    "formats/json.md", "formats/rendering-contract.md", "formats/lesson-template.md",
-    "visual/README.md", "visual/schemas/visual-component.schema.json",
+    "scripts/package_skill.py", "subjects/cybersecurity/subject.md",
+    "subjects/_template/subject.md", "formats/README.md", "formats/markdown.md",
+    "formats/mermaid.md", "formats/json.md", "formats/rendering-contract.md",
+    "formats/lesson-template.md", "visual/README.md",
+    "visual/schemas/visual-component.schema.json",
     "visual/components/concept-map.md", "visual/components/flow-diagram.md",
     "visual/components/annotated-diagram.md", "visual/components/learning-roadmap.md",
     "visual/components/simulation.md", "visual/components/revision-card.md",
-    "visual/examples/cybersecurity-concept-map.md", "visual/examples/website-request-flow.md",
-    "visual/examples/network-simulation.json",
+    "visual/examples/cybersecurity-concept-map.md",
+    "visual/examples/website-request-flow.md", "visual/examples/network-simulation.json",
 ]
 
 
