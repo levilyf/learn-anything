@@ -1,25 +1,29 @@
-<div align="center">
+<p align="center">
+  <img src="https://raw.githubusercontent.com/levilyf/learn-anything/main/assets/learn-anything-mark.svg" width="112" alt="Learn Anything logo" />
+</p>
 
-<img src="https://raw.githubusercontent.com/levilyf/learn-anything/main/assets/learn-anything-mark.svg" width="112" alt="Learn Anything logo" />
+<h1 align="center">Learn Anything</h1>
 
-# Learn Anything
+<h3 align="center">Learn anything. Actually understand it.</h3>
 
-### Learn anything. Actually understand it.
+<p align="center"><strong>An open-source adaptive learning engine for AI agents.</strong></p>
 
-**An open-source adaptive learning engine for AI agents.**
+<p align="center">Build a learning path. Teach one concept at a time. Test real understanding. Adapt to the learner. Keep progress portable.</p>
 
-Build a learning path. Teach one concept at a time. Test real understanding. Adapt to the learner. Keep progress portable.
+<p align="center">
+  <a href="#quick-start">Get started</a> ·
+  <a href="#how-it-works">How it works</a> ·
+  <a href="docs/README.md">Documentation</a> ·
+  <a href="CONTRIBUTING.md">Contribute</a> ·
+  <a href="#support-the-project">Support</a>
+</p>
 
-[Get started](#-quick-start) · [How it works](#-how-it-works) · [Documentation](docs/README.md) · [Contribute](CONTRIBUTING.md) · [Support](#-support-the-project)
-
-<br />
-
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB.svg)](https://www.python.org/)
-[![Agent Skills](https://img.shields.io/badge/Agent-Skills-7057ff.svg)](skills/learn-anything/SKILL.md)
-[![Status](https://img.shields.io/badge/Status-Early%20Development-orange.svg)](ROADMAP.md)
-
-</div>
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="License: Apache 2.0" /></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB.svg" alt="Python 3.10+" /></a>
+  <a href="skills/learn-anything/SKILL.md"><img src="https://img.shields.io/badge/Agent-Skills-7057ff.svg" alt="Agent Skills" /></a>
+  <a href="ROADMAP.md"><img src="https://img.shields.io/badge/Status-Early%20Development-orange.svg" alt="Early development" /></a>
+</p>
 
 ---
 
