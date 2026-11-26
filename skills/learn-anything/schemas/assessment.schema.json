@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:learn-anything:schema:v1:assessment",
+  "title": "Learn Anything assessment evidence",
+  "type": "object",
+  "required": ["schema_version", "concept_id", "task", "task_type", "result", "support_level"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "concept_id": {"type": "string", "minLength": 1},
+    "task": {"type": "string", "minLength": 1},
+    "task_type": {"type": "string", "enum": ["recall", "explanation", "application", "diagnosis", "transfer"]},
+    "result": {"type": "string", "enum": ["not_attempted", "incorrect", "partial", "correct"]},
+    "support_level": {"type": "string", "enum": ["none", "hint", "guided", "worked_example"]},
+    "response_evidence": {"type": "string"},
+    "reasoning_notes": {"type": "string"},
+    "misconceptions": {"type": "array", "items": {"type": "string"}},
+    "feedback_given": {"type": "string"},
+    "retry_result": {"type": "string", "enum": ["not_attempted", "incorrect", "partial", "correct"]},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "assessed_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
