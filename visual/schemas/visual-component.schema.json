@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/levilyf/learn-anything/blob/main/visual/schemas/visual-component.schema.json",
+  "$id": "urn:learn-anything:schema:v1:visual-component",
   "title": "Learn Anything Visual Component",
   "description": "Portable envelope for a visual teaching component. Type-specific payloads are defined by the visual component guides.",
   "type": "object",
