@@ -34,7 +34,7 @@ def main() -> int:
                 errors.append(f"Schema missing expected top-level fields: {path.relative_to(ROOT)}")
         except (OSError, json.JSONDecodeError) as exc:
             errors.append(f"Invalid JSON in {path.relative_to(ROOT)}: {exc}")
-    for path in (ROOT / "examples").glob("*.json"):
+    for path in ROOT.glob("**/*.json"):
         try:
             json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError) as exc:
