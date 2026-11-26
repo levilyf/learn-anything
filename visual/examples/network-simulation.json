@@ -1,0 +1,44 @@
+{
+  "id": "cybersecurity.network.packet-route-demo",
+  "type": "simulation",
+  "title": "Toy packet route",
+  "purpose": "Understand that a packet is forwarded hop by hop through a simplified network.",
+  "description": "A synthetic packet travels from a learner device through a router to a destination network. This is a teaching model, not a live network tool.",
+  "data": {
+    "model": "A fixed three-node forwarding path",
+    "initial_state": {
+      "packet_location": "device",
+      "destination_reachable": true
+    },
+    "controls": [
+      {
+        "id": "router_available",
+        "label": "Router available",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "id": "destination_reachable",
+        "label": "Destination reachable",
+        "type": "boolean",
+        "default": true
+      }
+    ],
+    "rules": [
+      "If router_available is false, forwarding stops at the device.",
+      "If router_available is true and destination_reachable is false, the router cannot deliver the packet to the destination.",
+      "If both controls are true, the model delivers the packet to the destination."
+    ],
+    "outputs": [
+      "Final packet location",
+      "Reason for delivery or failure"
+    ],
+    "reset": "Restore both controls to true and packet_location to device."
+  },
+  "fallback": "Start with the router and destination both available. Predict where the packet ends. Then make the router unavailable and predict again. Explain why the packet cannot be forwarded. This is a paper exercise; no real network traffic is sent.",
+  "safety": {
+    "synthetic_data_only": true,
+    "connects_to_real_targets": false,
+    "requires_authorization": false
+  }
+}
