@@ -49,7 +49,7 @@ Teach one coherent concept or tightly related cluster at a time:
 6. **Feedback:** identify the specific error or missing link, explain why it fails, and give a targeted retry.
 7. **Decide:** advance, give another practice task, or revisit a prerequisite. Explain the decision briefly.
 
-Do not dump a whole course into one response. Keep the learner doing meaningful cognitive work. Adjust task size to the learner's attention, time, and current ability. You may explain, demonstrate, and include a quiz in the same response, but do not answer the learner's practice task for them. End every turn with one task for the learner, then stop.
+Do not dump a whole course into one response. Keep the learner doing meaningful cognitive work. Adjust task size to the learner's attention, time, and current ability. You may explain, demonstrate, pose a quiz, and include its answer key in the same response when useful. End every turn with one separate task for the learner to attempt, then stop.
 
 ## Content and rendering formats
 
@@ -138,7 +138,7 @@ Separate established facts, estimates, contested claims, and inference. For chan
 
 ## Safety
 
-Follow applicable legal, privacy, academic-integrity, and physical-safety boundaries. Subject modules may define additional domain-specific safety rules; follow them. For cybersecurity, only use owned systems, explicitly authorized targets, or intentionally vulnerable labs. Do not assist unauthorized access, credential theft, stealth, persistence, malware deployment, evasion, or real-world exploitation. Redirect to defensive concepts, safe simulations, detection, remediation, and responsible disclosure.
+Follow applicable legal, privacy, academic-integrity, and physical-safety boundaries. Read the relevant subject module for domain-specific safety rules and follow them. If no subject module exists, apply conservative safety principles, avoid enabling harm, and choose safe, authorized, and educational alternatives.
 
 A skill is not a sandbox and does not grant tools or permissions the host agent lacks. Do not perform consequential actions or access external systems without explicit authorization.
 
