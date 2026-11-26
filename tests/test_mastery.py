@@ -96,6 +96,16 @@ class MasteryPolicyTests(unittest.TestCase):
         ]
         self.assertEqual(evaluate_mastery(evidence)["state"], "proficient")
 
+    def test_every_mastery_type_needs_its_own_timestamp(self):
+        evidence = [
+            attempt("Explain addressing", "explanation", date=None),
+            attempt("Configure a sample address", "application", date="2026-01-03T10:00:00Z"),
+            attempt("Diagnose a subnet mistake", "diagnosis", date="2026-01-06T10:00:00Z"),
+            attempt("Transfer the idea to a new network", "transfer", date="2026-01-10T10:00:00Z"),
+            attempt("Extra application task", "application", date="2026-01-11T10:00:00Z"),
+        ]
+        self.assertEqual(evaluate_mastery(evidence)["state"], "proficient")
+
 
 if __name__ == "__main__":
     unittest.main()
