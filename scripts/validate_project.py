@@ -11,7 +11,10 @@ REQUIRED = [
     "README.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md",
     "SECURITY.md", "ROADMAP.md", "skills/learn-anything/SKILL.md",
     "subjects/cybersecurity/subject.md", "subjects/_template/subject.md",
+    "formats/README.md", "formats/markdown.md", "formats/mermaid.md",
+    "formats/json.md", "formats/rendering-contract.md", "formats/lesson-template.md",
 ]
+
 
 def main() -> int:
     errors: list[str] = []
@@ -42,6 +45,7 @@ def main() -> int:
         return 1
     print("Learn Anything validation passed.")
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
