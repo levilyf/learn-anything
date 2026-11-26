@@ -42,11 +42,10 @@ def evaluate_mastery(
     at least two task types.
 
     Mastered: four distinct independent correct tasks covering explanation,
-    application, diagnosis and transfer, with timezone-aware timestamps
-    spanning at least seven days.
+    application, diagnosis and transfer. Each required task type must have a
+    timezone-aware timestamp, and the evidence must span at least seven days.
 
     If records contain multiple concepts, callers must specify concept_id.
-    This prevents evidence for unrelated concepts from being combined.
     """
     records = list(assessments)
     concept_ids = {item.get("concept_id") for item in records if item.get("concept_id")}
@@ -82,19 +81,29 @@ def evaluate_mastery(
 
     qualifying = list(unique.values())
     types = {item["task_type"] for item in qualifying}
-    dates = [_parse_date(item.get("assessed_at")) for item in qualifying]
-    valid_dates = [date for date in dates if date is not None]
+    dated_by_type: dict[str, list[datetime]] = {}
+    for item in qualifying:
+        date = _parse_date(item.get("assessed_at"))
+        if date is not None:
+            dated_by_type.setdefault(item["task_type"], []).append(date)
+
+    has_dated_mastery_coverage = MASTERED_TASK_TYPES.issubset(dated_by_type)
+    mastery_dates = [
+        date
+        for task_type in MASTERED_TASK_TYPES
+        for date in dated_by_type.get(task_type, [])
+    ]
 
     if (
         len(qualifying) >= 4
         and MASTERED_TASK_TYPES.issubset(types)
-        and len(valid_dates) >= 4
-        and (max(valid_dates) - min(valid_dates)).days >= 7
+        and has_dated_mastery_coverage
+        and (max(mastery_dates) - min(mastery_dates)).days >= 7
     ):
         return {
             "state": "mastered",
             "qualifying_tasks": [item["task"] for item in qualifying],
-            "reasons": ["Four distinct independent task types are demonstrated, including transfer, across at least seven days."],
+            "reasons": ["Explanation, application, diagnosis and transfer were each demonstrated independently with dated evidence spanning at least seven days."],
         }
 
     if len(qualifying) >= 2 and len(types) >= 2:
