@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learn-anything.dev/schemas/assessment.schema.json",
+  "title": "Learn Anything assessment evidence",
+  "type": "object",
+  "required": ["schema_version", "concept_id", "task", "result", "support_level"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "concept_id": {"type": "string"},
+    "task": {"type": "string"},
+    "result": {"type": "string", "enum": ["not_attempted", "incorrect", "partial", "correct"]},
+    "support_level": {"type": "string", "enum": ["none", "hint", "guided", "worked_example"]},
+    "reasoning_notes": {"type": "string"},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "assessed_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
