@@ -3,10 +3,11 @@ import unittest
 from core.mastery import evaluate_mastery
 
 
-def attempt(task, task_type="application", *, support="none", result="correct", date="2026-01-01T10:00:00Z"):
+def attempt(task, task_type="application", *, concept="networking.ip-addresses",
+            support="none", result="correct", date="2026-01-01T10:00:00Z"):
     return {
         "schema_version": "1.0.0",
-        "concept_id": "networking.ip-addresses",
+        "concept_id": concept,
         "task": task,
         "task_type": task_type,
         "result": result,
@@ -64,6 +65,34 @@ class MasteryPolicyTests(unittest.TestCase):
             attempt("Configure a sample address", "application"),
             attempt("Diagnose a subnet mistake", "diagnosis"),
             attempt("Transfer the idea to a new network", "transfer"),
+        ]
+        self.assertEqual(evaluate_mastery(evidence)["state"], "proficient")
+
+    def test_evidence_from_different_concepts_is_not_combined(self):
+        evidence = [
+            attempt("Explain an IP address", "explanation"),
+            attempt("Identify a private IP", "application", concept="networking.private-addresses"),
+        ]
+        result = evaluate_mastery(evidence)
+        self.assertEqual(result["state"], "practicing")
+        self.assertIn("multiple concepts", result["reasons"][0])
+        self.assertEqual(evaluate_mastery(evidence, concept_id="networking.ip-addresses")["state"], "practicing")
+
+    def test_timezone_offsets_are_normalized(self):
+        evidence = [
+            attempt("Explain addressing", "explanation", date="2026-01-01T10:00:00+05:30"),
+            attempt("Configure a sample address", "application", date="2026-01-03T04:30:00Z"),
+            attempt("Diagnose a subnet mistake", "diagnosis", date="2026-01-06T10:00:00+05:30"),
+            attempt("Transfer the idea to a new network", "transfer", date="2026-01-10T04:30:00Z"),
+        ]
+        self.assertEqual(evaluate_mastery(evidence)["state"], "mastered")
+
+    def test_naive_timestamps_cannot_prove_delayed_mastery(self):
+        evidence = [
+            attempt("Explain addressing", "explanation", date="2026-01-01T10:00:00"),
+            attempt("Configure a sample address", "application", date="2026-01-03T10:00:00"),
+            attempt("Diagnose a subnet mistake", "diagnosis", date="2026-01-06T10:00:00"),
+            attempt("Transfer the idea to a new network", "transfer", date="2026-01-10T10:00:00"),
         ]
         self.assertEqual(evaluate_mastery(evidence)["state"], "proficient")
 
